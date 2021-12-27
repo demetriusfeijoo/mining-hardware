@@ -4,8 +4,8 @@
   "description": "HOW TO KEEP TRACK OF ALL MY MINING DEVICES.",
   "main": "app.ts",
   "scripts": {
-    "dev": "cross-env NODE_ENV=dev tsnd --respawn ./src/app.ts",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "serve:dev": "cross-env NODE_ENV=dev tsnd --respawn ./src/app.ts",
+    "test": "yarn jest"
   },
   "author": "Demetrius Feijóo Campos",
   "license": "ISC",

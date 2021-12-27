@@ -1,0 +1,11 @@
+{
+  "name": "inventory",
+  "version": "0.0.1",
+  "description": "HOW TO KEEP TRACK OF ALL MY MINING DEVICES.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Demetrius Feijóo Campos",
+  "license": "ISC"
+}

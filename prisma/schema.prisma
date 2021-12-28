@@ -7,20 +7,42 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+// ACL Domain
 model User {
-  id String @db.VarChar(36) @id @default(uuid())
-  firstName String @db.VarChar(120)
-  lastName String @db.VarChar(120)
-  email String @db.VarChar(120) @unique
-  role Role @default(USER)
-  active Boolean @default(true)
+  id        String   @id @default(uuid()) @db.Char(36)
+  firstName String   @db.VarChar(120)
+  lastName  String   @db.VarChar(120)
+  email     String   @unique @db.VarChar(120)
+  role      Role     @default(USER)
   createdAt DateTime @default(now())
   updatedAt DateTime @default(now())
-  deletedAt DateTime?
 }
 
 enum Role {
   USER
   ADMIN
   M2M
+}
+
+// Items Domain
+model CardSerie {
+  id        String   @id @default(uuid()) @db.Char(36)
+  name      String   @db.VarChar
+  line      CardLine
+  cards     Card[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now())
+}
+
+model Card {
+  id        String    @id @default(uuid()) @db.Char(36)
+  serieId   String    @db.Char(36)
+  serie     CardSerie @relation(fields: [serieId], references: [id])
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @default(now())
+}
+
+enum CardLine {
+  NVIDIA
+  AMD
 }

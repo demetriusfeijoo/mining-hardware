@@ -4,8 +4,9 @@
   "description": "HOW TO KEEP TRACK OF ALL MY MINING DEVICES.",
   "main": "app.ts",
   "scripts": {
-    "serve:dev": "cross-env NODE_ENV=dev tsnd --respawn ./src/app.ts",
-    "test": "yarn jest"
+    "serve:dev": "cross-env NODE_ENV=dev dotenv-flow -- tsnd --respawn ./src/app.ts",
+    "migrate:dev": "cross-env NODE_ENV=dev dotenv-flow -- yarn prisma migrate dev",
+    "test:dev": "cross-env NODE_ENV=dev dotenv-flow -- yarn jest"
   },
   "author": "Demetrius Feijóo Campos",
   "license": "ISC",
@@ -19,17 +20,20 @@
     "@typescript-eslint/eslint-plugin": "^5.8.1",
     "@typescript-eslint/parser": "^5.8.1",
     "cross-env": "^7.0.3",
+    "dotenv-flow-cli": "^1.0.0",
     "eslint": "^8.5.0",
     "eslint-config-airbnb-typescript": "^16.1.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-import": "^2.25.3",
     "jest": "^27.4.5",
     "prettier": "2.5.1",
+    "prisma": "^3.7.0",
     "ts-jest": "^27.1.2",
     "ts-node-dev": "^1.1.8",
     "typescript": "^4.5.4"
   },
   "dependencies": {
+    "@prisma/client": "^3.7.0",
     "body-parser": "^1.19.1",
     "cors": "^2.8.5",
     "dotenv-flow": "^3.2.0",

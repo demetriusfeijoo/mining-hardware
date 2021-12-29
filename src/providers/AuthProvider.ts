@@ -14,8 +14,6 @@ export class AuthProvider {
     const token = jwt.sign(
       {
         email: user.email,
-        firstName: user.firstName,
-        lastName: user.lastName,
         role: user.role,
       },
       secret

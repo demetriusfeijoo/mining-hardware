@@ -15,6 +15,7 @@ model User {
   email     String   @unique @db.VarChar(120)
   password  String
   role      Role     @default(USER)
+  active    Boolean  @default(true)
   createdAt DateTime @default(now())
   updatedAt DateTime @default(now())
 }
@@ -25,22 +26,24 @@ enum Role {
   M2M
 }
 
-// Items Domain
+model Card {
+  id          String    @id @default(uuid()) @db.Char(36)
+  cardSerieId String    @db.Char(36)
+  name        String    @db.VarChar(120)
+  cardSerie   CardSerie @relation(fields: [cardSerieId], references: [id])
+  active      Boolean   @default(true)
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @default(now())
+}
+
 model CardSerie {
   id        String   @id @default(uuid()) @db.Char(36)
   name      String   @db.VarChar
   line      CardLine
   cards     Card[]
+  active    Boolean  @default(true)
   createdAt DateTime @default(now())
   updatedAt DateTime @default(now())
-}
-
-model Card {
-  id        String    @id @default(uuid()) @db.Char(36)
-  serieId   String    @db.Char(36)
-  serie     CardSerie @relation(fields: [serieId], references: [id])
-  createdAt DateTime  @default(now())
-  updatedAt DateTime  @default(now())
 }
 
 enum CardLine {

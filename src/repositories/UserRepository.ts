@@ -6,6 +6,7 @@ export class UserRepository {
       where: {
         email: email,
         password: password,
+        active: 1,
       },
     });
 

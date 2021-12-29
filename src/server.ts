@@ -1,14 +1,18 @@
 require("dotenv-flow").config();
 
-import express from "express";
+import express, { Request, Response } from "express";
 import cors from "cors";
 import bodyparser from "body-parser";
-import routes from "./routes";
+import auth from "./routes/auth";
+import { authorize } from "./middlewares/authorize";
 
 const server: express.Express = express();
 
 server.use(cors());
 server.use(bodyparser.json());
-server.use("/", routes);
+server.use("/status", authorize, (req: Request, res: Response) =>
+  res.send("up")
+);
+server.use("/", auth);
 
 export default server;

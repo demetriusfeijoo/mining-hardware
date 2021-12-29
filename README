@@ -1,1 +1,6 @@
-HOW TO KEEP TRACK OF ALL MY MINING DEVICES.
+@TODO LIST
+Add husky
+Add env check
+Add tests for env and login
+Add tests for exceptions
+Add types for services params
